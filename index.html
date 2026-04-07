@@ -855,8 +855,25 @@ footer::before {
   .about-grid, .feature-item, .feature-item.reverse { grid-template-columns: 1fr; direction: ltr; gap: 40px; }
   .problem-cards, .func-grid { grid-template-columns: 1fr 1fr; }
   .case-grid { grid-template-columns: 1fr; }
-  .flow-steps { flex-direction: column; align-items: center; }
-  .flow-step::after { content: '↓'; right: auto; top: auto; bottom: -24px; }
+  .flow-steps { flex-direction: column; align-items: stretch; gap: 0; }
+  .flow-step {
+    display: flex; flex-direction: row; align-items: center;
+    text-align: left; padding: 20px 16px; gap: 20px;
+  }
+  .flow-step::after {
+    content: none;
+  }
+  .flow-step:not(:last-child)::before {
+    display: none;
+  }
+  /* 番号とテキストを横並びに */
+  .step-num { margin: 0; flex-shrink: 0; }
+  .step-icon { display: none; }
+  .flow-step h3 { font-size: 14px; margin: 0; }
+  /* ステップ間の矢印を縦線で代替 */
+  .flow-step:not(:last-child) {
+    border-bottom: 1px dashed rgba(0,0,0,0.12);
+  }
   .cta-cards { grid-template-columns: 1fr; }
   .footer-inner { flex-direction: column; }
   section { padding: 64px 0; }
